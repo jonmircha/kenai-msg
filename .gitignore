@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Caché generada en runtime (el contenido se ignora; ver app/cache/.gitignore)
+/app/cache/*
+!/app/cache/.gitignore
+
+# Logs
+*.log
+
+# Editores / IDE
+.vscode/
+.idea/
+*.swp

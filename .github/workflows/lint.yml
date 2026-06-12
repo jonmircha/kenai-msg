@@ -1,0 +1,20 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  php-lint:
+    name: php -l (PHP 8.0)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar PHP 8.0
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.0"
+
+      - name: Comprobar la sintaxis de todos los archivos .php
+        run: find . -name "*.php" -not -path "./app/cache/*" -print0 | xargs -0 -n1 -P4 php -l

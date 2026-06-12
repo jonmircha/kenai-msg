@@ -1,0 +1,11 @@
+# Denegar todo acceso HTTP directo a este directorio (defensa en profundidad).
+# Los archivos aquí los usa index.php del lado del servidor, nunca por HTTP.
+<IfModule mod_authz_core.c>
+  # Apache 2.4+
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  # Apache 2.2
+  Order allow,deny
+  Deny from all
+</IfModule>

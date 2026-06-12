@@ -1,0 +1,15 @@
+# Normalizar finales de línea (LF) en el repo
+* text=auto eol=lf
+
+# Librerías de terceros vendoreadas: que NO cuenten en las estadísticas de
+# lenguaje de GitHub (si no, el mermaid.min.js de ~3 MB haría parecer que es
+# un proyecto JavaScript, cuando es PHP).
+assets/js/prism.js        linguist-vendored
+assets/js/mermaid.min.js  linguist-vendored
+assets/css/prism.css      linguist-vendored
+
+# Imágenes como binarios
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary

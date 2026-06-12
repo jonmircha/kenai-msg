@@ -1,0 +1,19 @@
+title: 🦊 kEnAi MSG
+description: Un generador de sitios web minimalista hecho con Vanilla PHP.
+author: Jonathan MirCha
+
+# url: base ABSOLUTA del sitio (para enlaces y para canonical / Open Graph).
+# OPCIONAL: si la dejas comentada, se deriva de la petición automáticamente.
+# Descoméntala y fíjala en PRODUCCIÓN para tener una URL canónica estable:
+# url: https://misitio.com
+
+# ogImage: imagen social por defecto (og:image / twitter:image). OPCIONAL.
+# Se usa cuando una página no define su propio campo `image` en el FrontMatter.
+# Puede ser ruta relativa (se hace absoluta) o URL completa:
+# ogImage: /img/og-default.png
+
+# twitter: handle de Twitter/X del sitio (para twitter:site). OPCIONAL.
+# twitter: "@jonmircha"
+
+# perPage: artículos por página en el listado del blog. OPCIONAL (por defecto 5).
+# perPage: 5

@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# 🔒 Bloquear acceso HTTP directo a los directorios internos.
+# index.php los lee del disco (no por HTTP), por lo que esto NO afecta al sitio:
+# las URLs amigables (/blog, /acerca, ...) no empiezan por app/ ni content/.
+RewriteRule ^(app|content)(/|$) - [F,L]
+
+# 🔒 Bloquear archivos sensibles por extensión en cualquier ubicación.
+<FilesMatch "\.(yml|yaml|md|markdown|log)$">
+  Require all denied
+</FilesMatch>
+
+# Front controller: toda petición que no sea un archivo/carpeta real va a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
