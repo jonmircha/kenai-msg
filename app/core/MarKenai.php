@@ -297,8 +297,11 @@ class MarKenai
           $i++;
           continue;
         }
-        // continuación "lazy" de párrafo
-        if (!$this->isBlockStart($cl)) {
+        // continuación "lazy" de párrafo: solo si la línea anterior NO está en
+        // blanco. Tras un blanco, un renglón sin sangría ya no es del ítem: cierra
+        // la lista (CommonMark). Sin esto, el párrafo que sigue a una lista se
+        // metía en su último ítem, pegado y sin espacio («Fusionar.Cuando…»).
+        if (!$this->isBlockStart($cl) && trim((string) end($itemLines)) !== '') {
           $itemLines[] = $cl;
           $i++;
           continue;

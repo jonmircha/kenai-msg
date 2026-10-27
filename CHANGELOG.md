@@ -7,7 +7,14 @@ y el proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
-_Sin cambios todavía._
+### Fixed
+
+- **MarKenai: un párrafo después de una lista ya no se mete en su último ítem.** La
+  continuación «perezosa» de un ítem (un renglón sin sangría que sigue su párrafo) se
+  aplicaba también después de una línea en blanco, y en CommonMark esa línea en blanco
+  cierra la lista. El párrafo, la imagen o el enlace siguiente quedaban dentro del último
+  `<li>`, pegados y sin espacio («Fusionar.Cuando…»), a veces con el HTML mal anidado.
+  Afectaba a la propia página `acerca`, con siete párrafos dentro de listas.
 
 ## [1.0.0] - 2026-06-11
 
