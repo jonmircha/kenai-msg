@@ -36,6 +36,8 @@ class MarKenai
   private bool $breaksEnabled = false;
   private array $references = [];
   private array $usedSlugs = [];
+  /** Número de la llamada a parseInline() en curso (ver sus tokens). */
+  private int $inlineCall = 0;
 
   /** Esquemas de URL permitidos en enlaces e imágenes. */
   private const ALLOWED_SCHEMES = ['http', 'https', 'mailto', 'ftp', 'tel'];
@@ -407,10 +409,15 @@ class MarKenai
 
   private function parseInline(string $text): string
   {
+    // Cada llamada marca sus tokens con su propio número. El texto de un
+    // enlace se procesa con otra llamada, recursiva, y llega con tokens de la
+    // de afuera —un `código` ya guardado—: con un solo contador, la de adentro
+    // los tomaba por suyos, no los encontraba y los borraba.
     $tokens = [];
-    $store = function (string $html) use (&$tokens): string {
+    $call = ++$this->inlineCall;
+    $store = function (string $html) use (&$tokens, $call): string {
       $tokens[] = $html;
-      return "\x02" . (count($tokens) - 1) . "\x03";
+      return "\x02" . $call . "\x1F" . (count($tokens) - 1) . "\x03";
     };
 
     // 1) Escapes con backslash
@@ -497,12 +504,17 @@ class MarKenai
       $text = str_replace("\n", "<br>\n", $text);
     }
 
-    // Restaurar tokens protegidos
-    $text = preg_replace_callback('/\x02(\d+)\x03/', function ($m) use (&$tokens) {
-      return $tokens[(int) $m[1]] ?? '';
-    }, $text);
+    // Restaurar tokens protegidos: solo los de esta llamada; los de una de
+    // afuera se quedan para que ella los restaure. Un token puede traer otros
+    // dentro (el enlace, el `código` de su texto), así que se restaura en
+    // profundidad.
+    $restore = function (string $s) use (&$tokens, $call, &$restore): string {
+      return preg_replace_callback('/\x02(\d+)\x1F(\d+)\x03/', function ($m) use (&$tokens, $call, $restore) {
+        return (int) $m[1] === $call && isset($tokens[(int) $m[2]]) ? $restore($tokens[(int) $m[2]]) : $m[0];
+      }, $s);
+    };
 
-    return $text;
+    return $restore($text);
   }
 
   private function parseEmphasis(string $t): string

@@ -9,6 +9,13 @@ y el proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
 ### Fixed
 
+- **MarKenai: el código en línea dentro del texto de un enlace ya no desaparece.**
+  `` [`código`](url) `` y `` [**`.metodo()`**](url) `` salían como un enlace vacío
+  (`<a href="…"><strong></strong></a>`). El código en línea se guarda como token antes de
+  procesar los enlaces, y el texto del enlace se procesa con una llamada recursiva que
+  tenía su propio contador: tomaba el token de afuera por suyo, no lo encontraba y lo
+  borraba. Ahora cada llamada marca sus tokens con su número, solo restaura los suyos y lo
+  hace en profundidad.
 - **MarKenai: un párrafo después de una lista ya no se mete en su último ítem.** La
   continuación «perezosa» de un ítem (un renglón sin sangría que sigue su párrafo) se
   aplicaba también después de una línea en blanco, y en CommonMark esa línea en blanco
