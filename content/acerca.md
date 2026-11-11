@@ -6,7 +6,7 @@ tags: ["paginas"]
 date: 2025-12-01
 ---
 
-## 🦊 kEnAi MSG — Minimalist Site Generator
+## kEnAi MSG — Minimalist Site Generator
 
 Un generador de sitios web minimalista y agnóstico hecho con **Vanilla PHP**, **sin dependencias de terceros**. Acepta plantillas en formatos **HTML**, **Markdown** y **PHP**, con metadatos en **YAML** y un parser de Markdown propio (**MarKenai**) con soporte estilo GitHub, diagramas **Mermaid** y _safe mode_.
 

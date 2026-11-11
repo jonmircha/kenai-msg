@@ -1,6 +1,9 @@
 <header>
   <div>
-    <a href="<?= $site['url'] ?>"><?= $site['title'] ?? 'Sin título' ?></a>
+    <a href="<?= $site['url'] ?>">
+      <img src="<?= $site['url'] ?>/img/kEnAi.png" alt="" width="34" height="40">
+      <span><?= $site['title'] ?? 'Sin título' ?></span>
+    </a>
     <nav class="menu">
       <a href="<?= $site['url'] ?>">Inicio</a>
       <a href="<?= $site['url'] ?>/acerca">Acerca</a>

@@ -1,16 +1,22 @@
 /* ===== Variables & Reset ===== */
 :root {
-  /* Colores */
-  --color-primary: #e7562e;
-  --color-primary-hover: #e7762e;
-  --color-secondary: #2c3e50;
-  --color-accent: #27ae60;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-bg: #ffffff;
-  --color-bg-alt: #f4f4f4;
-  --color-bg-card: #f9f9f9;
-  --color-border: #dddddd;
+  color-scheme: light;
+
+  /* Colores — identidad kEnAi (misma paleta que MAG y MOG) */
+  --color-primary: #b5652e;
+  /* marca */
+  --color-primary-hover: #6b4a33;
+  /* marca, variante profunda */
+  --color-secondary: #202225;
+  /* títulos */
+  --color-accent: #e7562e;
+  /* acento cálido */
+  --color-text: #202225;
+  --color-text-light: #6e6e6e;
+  --color-bg: #fcfcfc;
+  --color-bg-alt: #f0f0f0;
+  --color-bg-card: #ffffff;
+  --color-border: #eeeeee;
   --color-white: #ffffff;
 
   /* Tipografía */
@@ -150,9 +156,17 @@ header a {
 }
 
 header > div > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
+}
+
+header > div > a img {
+  width: 2.125rem;
+  height: 2.5rem;
 }
 
 .menu {
