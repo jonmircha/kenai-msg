@@ -7,6 +7,16 @@ y el proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-11
+
+### Changed
+
+- **Identidad kEnAi homologada con MAG y MOG.** Se aplicó la paleta kEnAi (marca
+  ámbar, fondos y texto) en `assets/styles.css`, se muestra el imagotipo en el
+  header y se quitó el emoji del título (`site.yml`, `content/index.html` y
+  `content/acerca.md`), para que los tres generadores compartan logo, favicon y
+  colores. Tema claro, sin dark/light.
+
 ### Fixed
 
 - **MarKenai: el código en línea dentro del texto de un enlace ya no desaparece.**
@@ -75,5 +85,6 @@ de sitios en PHP vanilla, **sin dependencias de terceros** y **sin paso de build
   opcional para escapar todo el HTML crudo del Markdown.
 - Escapado de la salida (metaetiquetas, búsqueda) y límite de longitud en la búsqueda.
 
-[Unreleased]: https://github.com/jonmircha/kenai-msg/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/jonmircha/kenai-msg/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/jonmircha/kenai-msg/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jonmircha/kenai-msg/releases/tag/v1.0.0
